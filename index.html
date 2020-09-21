@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styels.css" />
+    <title>Color Ranger</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="color">
+        <label for="red">(R) Vermelho</label>
+        <input type="range" min="0" max="255" name="red" id="redRng" />
+        <input disabled type="text" id="redTxt" />
+      </div>
+      <div class="color">
+        <label for="green">(R) Verde</label>
+        <input type="range" min="0" max="255" name="green" id="greenRng" />
+        <input disabled type="text" id="greenTxt" />
+      </div>
+      <div class="color">
+        <label for="blue">(R) Azul</label>
+        <input type="range" min="0" max="255" name="blue" id="blueRng" />
+        <input disabled type="text" id="blueTxt" />
+      </div>
+      <div id="colorVisualizer"></div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
