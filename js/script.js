@@ -11,8 +11,8 @@ function pageReady() {
 
   for (let index = 0; index < colors.length; index++) {
     const color = colors[index];
-    color.elRanger = document.querySelector('#' + color.name + 'Rng');
-    color.elValue = document.querySelector('#' + color.name + 'Txt');
+    color.elRanger = document.querySelector(`#${color.name}Rng`);
+    color.elValue = document.querySelector(`#${color.name}Txt`);
 
     color.elValue.placeholder = color.elRanger.value;
 
