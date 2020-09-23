@@ -1,47 +1,40 @@
 window.addEventListener('load', pageReady);
 
 function pageReady() {
-  const red = document.querySelector('#redRng');
-  const redText = document.querySelector('#redTxt');
+  const colors = [
+    red = { name: 'red', elRanger: null, elValue: null },
+    green = { name: 'green', elRanger: null, elValue: null },
+    blue = { name: 'blue', elRanger: null, elValue: null }
+  ];
 
-  const green = document.querySelector('#greenRng');
-  const greenText = document.querySelector('#greenTxt');
+  const squareColor = document.querySelector('#colorVisualizer');
 
-  const blue = document.querySelector('#blueRng');
-  const blueText = document.querySelector('#blueTxt');
+  for (let index = 0; index < colors.length; index++) {
+    const color = colors[index];
+    color.elRanger = document.querySelector('#' + color.name + 'Rng');
+    color.elValue = document.querySelector('#' + color.name + 'Txt');
 
-  function redHandler() {
-    redText.placeholder = red.value;
-    setBgColor();
+    color.elValue.placeholder = color.elRanger.value;
+
+    color.elRanger.addEventListener('input', updateValue);
   }
 
-  function greenHandler() {
-    greenText.placeholder = green.value;
-    setBgColor();
-  }
+  function updateValue(e) {
+    let colorArr;
 
-  function blueHandler() {
-    blueText.placeholder = blue.value;
-    setBgColor();
-  }
+    switch (e.target.name) {
+      case 'red': colorArr = 0; break;
+      case 'green': colorArr = 1; break;
+      case 'blue': colorArr = 2; break;
+      default: console.log('Something went wrong'); break;
+    }
 
-  function setBgColor() {
-    const squareColor = document.querySelector('#colorVisualizer');
-    squareColor.style.backgroundColor =
-      'rgb(' + red.value + ', ' + green.value + ', ' + blue.value + ')';
-  }
+    colors[colorArr].elValue.placeholder = colors[colorArr].elRanger.value;
 
-  update();
+    const red = colors[0].elRanger.value
+    const green = colors[1].elRanger.value
+    const blue = colors[2].elRanger.value
 
-  setBgColor();
-
-  red.addEventListener('change', update);
-  green.addEventListener('change', update);
-  blue.addEventListener('change', update);
-
-  function update() {
-    redHandler();
-    greenHandler();
-    blueHandler();
+    squareColor.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
   }
 }
